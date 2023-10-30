@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
+    "@prisma/client": "^4.12.0"
+  },
+  "devDependencies": {
+    "prisma": "^4.12.0"
+  }
+}
