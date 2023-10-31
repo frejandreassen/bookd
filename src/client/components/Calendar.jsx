@@ -371,7 +371,7 @@ export default function Calendar({user, rooms, bookings, selectedDate, setSelect
                     <>
                         <button 
                             onClick={navigateLeft}
-                            className={`bg-white absolute top-0 left-0 z-50 p-2 m-1 ml-5 sm:ml-10 rounded-full border-2 border-gray-300 hover:bg-gray-100 transition ${currentStartColumn === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}`}
+                            className={`bg-white absolute top-0 left-0 z-50 p-2 m-1 ml-5 sm:ml-10 rounded-full border-2 border-gray-300 hover:bg-gray-100 transition ${currentStartColumn === 0 ? 'invisible opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}`}
                             disabled={currentStartColumn === 0}
                         >
                             <ChevronLeftIcon className="w-6 h-6" />
@@ -379,7 +379,7 @@ export default function Calendar({user, rooms, bookings, selectedDate, setSelect
 
                         <button 
                             onClick={navigateRight}
-                            className={`bg-white absolute top-0 right-0 z-50 p-2 m-1 mr-5 rounded-full border-2 border-gray-300 hover:bg-gray-100 transition ${currentStartColumn + maxVisibleColumns >= allColumns.length ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}`}
+                            className={`bg-white absolute top-0 right-0 z-50 p-2 m-1 mr-5 rounded-full border-2 border-gray-300 hover:bg-gray-100 transition ${currentStartColumn + maxVisibleColumns >= allColumns.length ? 'invisible opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}`}
                             disabled={currentStartColumn + maxVisibleColumns >= allColumns.length}
                         >
                             <ChevronRightIcon className="w-6 h-6" />
