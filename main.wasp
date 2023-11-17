@@ -124,7 +124,7 @@ psl=}
 entity GroupInvite {=psl
     id            Int               @id @default(autoincrement())
     groupId       Int
-    group         Group   @relation(fields: [groupId], references: [id])
+    group         Group   @relation(fields: [groupId], references: [id], onDelete: Cascade)
     invitedEmail  String
     role          String  @default("MEMBER")
     response      String  @default("")

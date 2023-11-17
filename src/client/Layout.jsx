@@ -8,7 +8,7 @@ export const Layout = ({ children }) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="bg-gradient-to-b from-primary-600 to-primary-700 text-white p-2 shadow-xl">
+      <header className="bg-gradient-to-b from-primary-500 to-primary-600 text-white p-2 shadow-xl">
         <div className="container mx-auto px-4 py-2 flex justify-between">
           <Link to="/">
             <div className="flex space-x-2">

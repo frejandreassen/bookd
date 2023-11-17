@@ -118,7 +118,10 @@ export function SettingsPage({user}) {
           
           {/* BOOKINGS */}
           <div>
-            <h2 className="text-xl font-semibold leading-7 text-gray-900">Bookings</h2>
+            <div className="flex space-x-2">
+              <CalendarIcon className="text-primary-500 h-6 w-6" />
+              <h2 className="text-xl font-semibold leading-7 text-gray-900">Bookings</h2>
+            </div>
             <p className="mt-1 text-sm leading-6 text-gray-500">Your upcoming bookings</p>
 
             <ul role="list" className="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
@@ -142,14 +145,17 @@ export function SettingsPage({user}) {
                   type="button" className="font-semibold text-secondary-600 hover:text-secondary-500">
                   Details
                 </button>
-              </li>)) :  <li className="flex justify-between gap-x-6 py-6"> <div className="font-medium text-gray-900"> -- No bookings --</div> </li>}
+              </li>)) :  <li className="flex justify-between gap-x-6 py-6"> <div className="font-medium text-gray-500 text-center w-full"> -- No upcoming bookings --</div> </li>}
             </ul>
           </div>
           
           {/* GROUPS */}
           <div className="mt-10 mx-auto max-w-2xl space-y-16 sm:space-y-20 lg:mx-0 lg:max-w-none">
             <div>
-              <h2 className="text-xl font-semibold leading-7 text-gray-900">Facilities</h2>
+              <div className="flex space-x-2">
+                <BuildingOffice2Icon className="text-primary-500 h-6 w-6" />
+                <h2 className="text-xl font-semibold leading-7 text-gray-900">Facilities</h2>
+              </div>
               <p className="mt-1 text-sm leading-6 text-gray-500">
                 Your resource and room collections
               </p>
@@ -159,7 +165,7 @@ export function SettingsPage({user}) {
                   
                     <li key={idx}  className=" flex justify-between" >
                       <Link className="flex justify-start space-x-4 py-6 w-full" to={`/g/${membership.groupId}`}>
-                        <div className="self-center">
+                        <div className="self-center text-gray-500">
                           <BuildingOffice2Icon className="h-5 w-5 " />
                         </div>
                         <div className="">
@@ -179,7 +185,7 @@ export function SettingsPage({user}) {
                           Settings
                         </button>
                       </Link>
-                    </li>)) : <li className="flex justify-between gap-x-6 py-6"> <div className="font-medium text-gray-900"> -- No facilities --</div> </li>
+                    </li>)) : <li className="flex justify-between gap-x-6 py-6"> <div className="font-medium text-gray-500 text-center w-full"> -- No facilities --</div> </li>
                   }
               </ul>
               <div className="flex border-t border-gray-100 pt-6">
@@ -200,7 +206,7 @@ export function SettingsPage({user}) {
               <div className="w-full justify-center pt-10 mt-10 sm:flex">
                 <button
                   type="button"
-                  className="inline-flex w-full justify-center rounded-md text-red-600 px-3 py-2 text-sm font-semibold border border-red-600 shadow-sm hover:text-white hover:bg-red-500 sm:w-auto"
+                  className="inline-flex w-full justify-center rounded-md text-secondary-600 px-3 py-2 text-sm font-semibold border border-secondary-600 shadow-sm hover:text-white hover:bg-secondary-500 sm:w-auto"
                   onClick={logout}
                 >
                   Log out

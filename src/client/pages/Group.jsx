@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
 import { useQuery } from '@wasp/queries';
 import { format } from 'date-fns'
 import getRoomsByGroup from '@wasp/queries/getRoomsByGroup';
@@ -49,6 +51,11 @@ export function GroupPage({user, match}) {
   rooms.sort((a,b) => a.id - b.id)
   if (membership.length > 0) return (
     <div className="sm:p-4">
+      <Link to={`/g/${groupId}/settings`} className="space-x-1 flex items-center text-sm text-gray-500">
+        {/* <ArrowLeftIcon className="h-5 w-5"/> */}
+        <Cog6ToothIcon className="h5 w-5" />
+        {/* <span>Settings</span> */}
+      </Link>
       <Calendar 
         user={user}
         rooms={rooms} 

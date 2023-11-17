@@ -1,5 +1,17 @@
 import React, {useState} from 'react';
-import { BuildingOffice2Icon, BuildingOfficeIcon, PencilSquareIcon, EnvelopeOpenIcon, StarIcon, UserGroupIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom';
+import {
+  BuildingOffice2Icon,
+  BuildingOfficeIcon,
+  PencilSquareIcon,
+  EnvelopeOpenIcon,
+  StarIcon,
+  UserGroupIcon,
+  UserCircleIcon,
+  CalendarIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon
+} from '@heroicons/react/24/outline';
 import Loader from '../components/Loader';
 import { useQuery } from '@wasp/queries';
 import getGroup from '@wasp/queries/getGroup';
@@ -116,8 +128,18 @@ export function GroupSettingsPage({user, match}){
         title={'Delete Room'}
         text={'You are about to delete this resource. All bookings associated with the resource will be permanently removed from our servers forever. This action cannot be undone.'}
       />
-      <main className="px-4 py-16 sm:px-6 lg:flex-auto lg:px-0 lg:py-20">
+      <main className="px-4 sm:px-6 lg:flex-auto lg:px-0 lg:pb-20">
         <div>
+          <div className="flex justify-between mb-10 text-gray-500">
+            <Link to={`/settings`} className="space-x-1 flex items-center">
+              <ArrowLeftIcon className="h-5 w-5"/>
+            </Link>
+            <Link to={`/g/${groupId}`} className="space-x-1 flex items-center">
+              <CalendarIcon className="h-5 w-5"/>
+              <span>Calendar</span>
+              <ArrowRightIcon className="h-5 w-5"/>
+            </Link>
+          </div>
           <div className="flex w-full justify-between">
             <div className="flex space-x-2 ">
               {(!edit) && <BuildingOffice2Icon className="h-6 w-6" />}
@@ -157,7 +179,7 @@ export function GroupSettingsPage({user, match}){
                 <button 
                   type="button"
                   onClick={() => handleDeleteClick(room)} 
-                  className="w-full text-center text-red-600 hover:text-red-500 font-semibold"
+                  className="w-full text-center text-secondary-600 hover:text-secondary-500 font-semibold"
                 >
                   Delete
                 </button>
@@ -205,7 +227,7 @@ export function GroupSettingsPage({user, match}){
                   <button 
                     type="button"
                     onClick={() => handleDeleteMemberClick(member)} 
-                    className="w-full text-center text-red-600 hover:text-red-500 font-semibold"
+                    className="w-full text-center text-secondary-600 hover:text-secondary-500 font-semibold"
                   >
                     Remove
                   </button>
@@ -227,7 +249,7 @@ export function GroupSettingsPage({user, match}){
                   <button 
                     type="button"
                     onClick={() => handleRemoveInvitationClick(invite.id)} 
-                    className="w-full text-center text-red-600 hover:text-red-500 font-semibold"
+                    className="w-full text-center text-secondary-600 hover:text-secondary-500 font-semibold"
                   >
                     Remove
                   </button>
@@ -248,7 +270,7 @@ export function GroupSettingsPage({user, match}){
         {(!isAdmin) ? <div className=" w-full pt-10 mt-10 sm:flex">
           <button
             type="button"
-            className="inline-flex w-full justify-center rounded-md text-red-600 px-3 py-2 text-sm font-semibold border border-red-600 shadow-sm hover:text-white hover:bg-red-500 sm:w-auto"
+            className="inline-flex w-full justify-center rounded-md text-secondary-600 px-3 py-2 text-sm font-semibold border border-secondary-600 shadow-sm hover:text-white hover:bg-secondary-500 sm:w-auto"
             onClick={handleLeaveClick}
           >
             Leave group
@@ -260,7 +282,7 @@ export function GroupSettingsPage({user, match}){
           <button 
             type="button"
             onClick={() => handleDeleteGroupClick(group)} 
-            className="inline-flex w-full justify-center rounded-md text-red-600 px-3 py-2 text-sm font-semibold border border-red-600 shadow-sm hover:text-white hover:bg-red-500 sm:w-auto">
+            className="inline-flex w-full justify-center rounded-md text-secondary-600 px-3 py-2 text-sm font-semibold border border-secondary-600 shadow-sm hover:text-white hover:bg-secondary-500 sm:w-auto">
             Delete facility
           </button>
         </div>}
