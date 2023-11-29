@@ -213,7 +213,7 @@ export const createInvitation = async (args, context) => {
     args.invitedEmails.map(email => 
       context.entities.GroupInvite.create({
         data: {
-          invitedEmail: email,
+          invitedEmail: email.toLowerCase(),
           role: args.role,
           groupId: args.groupId,
           createdById: context.user.id,
