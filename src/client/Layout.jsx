@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useAuth from '@wasp/auth/useAuth';
-import { Bars3Icon} from '@heroicons/react/20/solid'
+import { Cog6ToothIcon, CalendarIcon} from '@heroicons/react/20/solid'
 import "./Main.css";
 
 export const Layout = ({ children }) => {
@@ -18,9 +18,14 @@ export const Layout = ({ children }) => {
             </div>
           </Link>
           { user ? (
-            <Link to="/settings">
-              <Bars3Icon className="text-white h-5 w-5" />
-            </Link>
+            <div className="flex space-x-5">
+              <Link to="/home">
+                <CalendarIcon className="text-white h-5 w-5" />
+              </Link>
+              <Link to="/settings">
+                <Cog6ToothIcon className="text-white h-5 w-5" />
+              </Link>
+            </div>
           ) : (
             <Link to="/login">
               <h1 className="underline">Log in</h1>
@@ -29,7 +34,7 @@ export const Layout = ({ children }) => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-2 flex-grow">
+      <main className="container mx-auto flex-grow">
         {children}
       </main>
       <footer>
