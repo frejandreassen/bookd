@@ -7,7 +7,7 @@ export const Layout = ({ children }) => {
   const { data: user } = useAuth();
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen font-inter">
       <header className="bg-gradient-to-b from-primary-500 to-primary-600 text-white p-2 shadow-xl">
         <div className="container mx-auto px-4 py-2 flex justify-between">
           <Link to="/">

@@ -8,6 +8,9 @@ app RoomBooking {
     ("date-fns", "^2.30.0")
   ],
   title: "bookd",
+  head: [
+    "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Inter&display=swap\" />"
+  ],
   client: {
     rootComponent: import { Layout } from "@client/Layout.jsx"
   },
