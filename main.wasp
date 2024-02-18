@@ -30,21 +30,23 @@ app RoomBooking {
       email: {
         // 3. Specify the email from field
         fromField: {
-          name: "Room booking app",
-          email: "frej.andreassen@falkenberg.se"
+          name: "Bookd.xyz",
+          email: "notifications@bookd.xyz"
         },
         // 4. Specify the email verification and password reset options (we'll talk about them later)
         emailVerification: {
           clientRoute: EmailVerificationRoute,
+          getEmailContentFn: import { getVerificationEmailContent } from "@server/auth/email.js",
         },
         passwordReset: {
           clientRoute: PasswordResetRoute,
+          getEmailContentFn: import { getPasswordResetEmailContent } from "@server/auth/email.js",
         },
         allowUnverifiedLogin: false,
       },
     },
     onAuthFailedRedirectTo: "/login",
-    onAuthSucceededRedirectTo: "/"
+    onAuthSucceededRedirectTo: "/home"
   },
 }
 

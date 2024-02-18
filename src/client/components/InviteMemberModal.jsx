@@ -10,10 +10,12 @@ function InviteMemberModal({ open, setOpen, groupId, createInvitation}) {
   const [inviteEmails, setInviteEmails] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [selectedRole, setSelectedRole] = useState('MEMBER')
+  const [isLoading, setIsLoading] = useState(false)
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   async function handleSave() {
+    setIsLoading(true); // Start loading
     // Split the emails string by commas and remove whitespace.
     const emailsArray = inviteEmails.split(',').map(email => email.trim());
 
@@ -31,6 +33,7 @@ function InviteMemberModal({ open, setOpen, groupId, createInvitation}) {
     setErrorMessage('');
     setInviteEmails('');
     setOpen(false)
+    setIsLoading(false); // Stop loading
   }
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -136,6 +139,7 @@ function InviteMemberModal({ open, setOpen, groupId, createInvitation}) {
                   <button
                     type="button"
                     onClick={handleSave}
+                    disabled={isLoading}
                     className="w-full rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
                   >
                     Save

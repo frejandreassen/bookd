@@ -1,4 +1,40 @@
 import HttpError from '@wasp/core/HttpError.js'
+import { emailSender } from "@wasp/email/index.js";
+
+// Assuming this is within an async function where context.user.email is accessible
+const sendInviteEmails = async (invitedEmails, invitingUserEmail, role, signupLink = "https://bookd.xyz/signup", loginLink="https://bookd.xyz/login") => {
+  const invitePromises = invitedEmails.map(async email => {
+    const emailContent = {
+      from: {
+        name: "Bookd.xyz Roombooking app",
+        email: "notifications@bookd.xyz",
+      },
+      to: email,
+      subject: "You're Invited to Join Bookd!",
+      text: `You have been invited by ${invitingUserEmail} to join Bookd as a ${role}. Join us now by signing up at ${signupLink}, or if you already have an account, please log in here ${loginLink}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2 style="color: #e0345f;">You're Invited to Join Bookd!</h2>
+          <p>You have been invited by <strong>${invitingUserEmail}</strong> to join their group in Bookd.</p>
+          <p>Bookd simplifies booking rooms and resources for teams and businesses. Get started by creating your account:</p>
+          <div style="margin: 20px 0;">
+            <a href="${signupLink}" style="background-color: #e0345f; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">Sign Up</a>
+          </div>
+          <p>If you already have an account, <a href="${loginLink}" style="color: #e0345f; text-decoration: none;">please log in</a>.</p>
+          <p>If you have any questions or need assistance, feel free to contact our support team at <a href="mailto:support@bookd.xyz" style="color: #e0345f;">support@bookd.xyz</a>.</p>
+          <p>Looking forward to having you on board!</p>
+          <p style="font-size: small; color: #999;">If you did not expect this invitation, please disregard this email or let us know.</p>
+        </div>
+      `,
+    };
+
+    // Send the email
+    return emailSender.send(emailContent);
+  });
+
+  // Wait for all invites to be sent
+  await Promise.all(invitePromises);
+};
 
 export const createRoom = async (args, context) => {
   if (!context.user) { throw new HttpError(401) }
@@ -221,7 +257,7 @@ export const createInvitation = async (args, context) => {
       })
     )
   );
-
+  await sendInviteEmails(args.invitedEmails, context.user.email, args.role);
   return invites;
 }
 
