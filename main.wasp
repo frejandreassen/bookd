@@ -46,7 +46,7 @@ app RoomBooking {
       },
     },
     onAuthFailedRedirectTo: "/login",
-    onAuthSucceededRedirectTo: "/home"
+    onAuthSucceededRedirectTo: "/"
   },
 }
 
