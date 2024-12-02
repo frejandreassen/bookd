@@ -269,13 +269,15 @@ query getGroup {
   entities: [Group]
 }
 
-route LandingPage { path: "/", to: Landing }
-page Landing {
-  component: import { LandingPage } from "@client/pages/Landing.jsx",
-  authRequired: false
-}
 
-route HomePage { path: "/home", to: Home }
+// route LandingPage { path: "/", to: Landing }
+// page Landing {
+//   component: import { LandingPage } from "@client/pages/Landing.jsx",
+//   authRequired: false
+// }
+
+// route HomePage { path: "/home", to: Home }
+route HomePage { path: "/", to: Home }
 page Home {
   component: import { HomePage } from "@client/pages/Home.jsx",
   authRequired: true

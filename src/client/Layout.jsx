@@ -19,9 +19,9 @@ export const Layout = ({ children }) => {
           </Link>
           { user ? (
             <div className="flex space-x-5">
-              <Link to="/home">
+              {/* <Link to="/home">
                 <CalendarIcon className="text-white h-5 w-5" />
-              </Link>
+              </Link> */}
               <Link to="/settings">
                 <Cog6ToothIcon className="text-white h-5 w-5" />
               </Link>
